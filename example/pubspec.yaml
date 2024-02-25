@@ -1,0 +1,29 @@
+name: flutter_notification_manager_example
+description: "Demonstrates how to use the flutter_notification_manager plugin."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_notification_manager:
+    path: ../
+  collection: ^1.18.0
+  cupertino_icons: ^1.0.6
+  gap: ^3.0.1
+  go_router: ^13.2.0
+  hooks_riverpod: ^2.4.10
+  flutter_hooks: ^0.20.5
+  meta: ^1.10.0
+
+dev_dependencies:
+  device_info_plus: ^9.1.2
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  integration_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
