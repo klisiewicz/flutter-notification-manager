@@ -12,7 +12,7 @@ NotificationChannel _$NotificationChannelFromJson(Map json) =>
       name: json['name'] as String,
       importance:
           $enumDecodeNullable(_$ImportanceEnumMap, json['importance']) ??
-              Importance.standard,
+              Importance.normal,
       description: json['description'] as String?,
       groupId: json['groupId'] as String?,
       conversation: json['conversation'] == null
@@ -45,7 +45,7 @@ Map<String, dynamic> _$NotificationChannelToJson(
 const _$ImportanceEnumMap = {
   Importance.max: 5,
   Importance.high: 4,
-  Importance.standard: 3,
+  Importance.normal: 3,
   Importance.low: 2,
   Importance.min: 1,
   Importance.none: 0,

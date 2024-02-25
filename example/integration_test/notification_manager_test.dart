@@ -70,7 +70,7 @@ Future<void> main() async {
         );
 
         final groups = await notificationManager.getNotificationChannelGroups();
-        expect(group, isEmpty);
+        expect(groups, isEmpty);
       },
       sdk: sdk,
       maxSdk: 25,
@@ -216,6 +216,32 @@ Future<void> main() async {
     );
 
     testAndroid(
+      'should delete an existing group with all channels assigned to it',
+      (tester) async {
+        final groupId = randomId();
+        final channelId = randomId();
+        await notificationManager.createNotificationChannelGroup(
+          NotificationChannelGroup(id: groupId),
+        );
+        await notificationManager.createNotificationChannel(
+          NotificationChannel(id: channelId, name: 'Channel', groupId: groupId),
+        );
+
+        await notificationManager.deleteNotificationChannelGroup(groupId);
+
+        final group =
+            await notificationManager.getNotificationChannelGroup(groupId);
+        expect(group, isNull);
+
+        final channel =
+            await notificationManager.getNotificationChannel(channelId);
+        expect(channel, isNull);
+      },
+      minSdk: 27,
+      sdk: sdk,
+    );
+
+    testAndroid(
       'should return normally when deleting none existing group',
       (tester) async {
         await expectLater(
@@ -301,10 +327,10 @@ Future<void> main() async {
 
         final channel =
             await notificationManager.getNotificationChannel(channelId);
-        expect(group, isNull);
+        expect(channel, isNull);
 
         final channels = await notificationManager.getNotificationChannels();
-        expect(group, isEmpty);
+        expect(channels, isEmpty);
       },
       sdk: sdk,
       maxSdk: 25,

@@ -57,7 +57,7 @@ final class NotificationChannel {
   const NotificationChannel({
     required this.id,
     required this.name,
-    this.importance = Importance.standard,
+    this.importance = Importance.normal,
     this.description,
     this.groupId,
     this.conversation,
@@ -103,7 +103,7 @@ final class Conversation {
 enum Importance {
   max(5),
   high(4),
-  standard(3),
+  normal(3),
   low(2),
   min(1),
   none(0),
