@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -45,10 +43,10 @@ final class NotificationChannel {
   /// Whether notifications posted to this channel should display notification
   /// lights, on devices that support that feature.
   final bool enableLights;
-  @JsonKey(toJson: _colorToJson, fromJson: _colorFromJson)
 
+  @JsonKey(toJson: _colorToJson, fromJson: _colorFromJson)
   /// The notification light color for notifications posted to this channel.
-  final Color? lightColor;
+  final int? lightColor;
 
   /// Whether notification posted to this channel should vibrate.
   final bool enableVibrations;
@@ -118,6 +116,6 @@ enum Importance {
   const Importance(this.value);
 }
 
-int? _colorToJson(Color? color) => color?.value;
+int? _colorToJson(int? argb) => argb != null ? argb & 0xFFFFFFFF : null;
 
-Color? _colorFromJson(int? argb) => argb != null ? Color(argb) : null;
+int? _colorFromJson(int? argb) => argb != null ? argb & 0xFFFFFFFF : null;

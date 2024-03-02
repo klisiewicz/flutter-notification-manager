@@ -349,7 +349,7 @@ Future<void> main() async {
             showBadge: true,
             enableVibrations: true,
             enableLights: true,
-            lightColor: const Color(0xFFFF00FF),
+            lightColor: 0xFFFF00FF,
           ),
         );
 
@@ -363,7 +363,7 @@ Future<void> main() async {
         expect(channel.showBadge, isTrue);
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
-        expect(channel.lightColor, const Color(0xFFFF00FF));
+        expect(channel.lightColor, 0xFFFF00FF);
       },
       minSdk: 26,
       sdk: sdk,
@@ -547,7 +547,7 @@ Future<void> main() async {
             showBadge: false,
             enableVibrations: true,
             enableLights: true,
-            lightColor: const Color(0xFFFF00FF),
+            lightColor: 0xFFFF00FF,
           ),
         );
 
@@ -561,7 +561,7 @@ Future<void> main() async {
             showBadge: true,
             enableVibrations: false,
             enableLights: false,
-            lightColor: const Color(0xFF00FFFF),
+            lightColor: 0xFF00FFFF,
           ),
         );
 
@@ -575,7 +575,7 @@ Future<void> main() async {
         expect(channel.showBadge, isFalse);
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
-        expect(channel.lightColor, const Color(0xFFFF00FF));
+        expect(channel.lightColor, 0xFFFF00FF);
       },
       minSdk: 26,
       sdk: sdk,
@@ -729,7 +729,7 @@ Future<void> main() async {
             showBadge: false,
             enableVibrations: true,
             enableLights: true,
-            lightColor: const Color(0xFFFF00FF),
+            lightColor: 0xFFFF00FF,
           ),
         );
         await notificationManager.deleteNotificationChannel(channelId);
@@ -744,7 +744,7 @@ Future<void> main() async {
             showBadge: true,
             enableVibrations: false,
             enableLights: false,
-            lightColor: const Color(0xFF00FFFF),
+            lightColor: 0xFF00FFFF,
           ),
         );
 
@@ -758,7 +758,7 @@ Future<void> main() async {
         expect(channel.showBadge, isFalse);
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
-        expect(channel.lightColor, const Color(0xFFFF00FF));
+        expect(channel.lightColor, 0xFFFF00FF);
       },
       minSdk: 26,
       sdk: sdk,
