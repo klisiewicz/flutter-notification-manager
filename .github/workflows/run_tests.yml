@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [25]
+        api-level: [25, 28]
 #        api-level: [25, 26, 28, 30]
         target: [default]
-      fail-fast: true
 
     steps:
       - uses: actions/checkout@v3
