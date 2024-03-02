@@ -9,9 +9,9 @@ import 'package:integration_test/integration_test.dart';
 import 'android_tester.dart';
 
 Future<void> main() async {
-  final sdk = (await DeviceInfoPlugin().androidInfo).version.sdkInt;
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   late NotificationManager notificationManager;
+  final sdk = (await DeviceInfoPlugin().androidInfo).version.sdkInt;
 
   setUp(() {
     notificationManager = const NotificationManager();
