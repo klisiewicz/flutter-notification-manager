@@ -611,7 +611,7 @@ Future<void> main() async {
 
     testAndroid(
       'should NOT update a channel importance when changing from lower to higher',
-          (tester) async {
+      (tester) async {
         final channelId = randomId();
         await notificationManager.createNotificationChannel(
           NotificationChannel(
@@ -630,7 +630,7 @@ Future<void> main() async {
         );
 
         final channel =
-        (await notificationManager.getNotificationChannel(channelId))!;
+            (await notificationManager.getNotificationChannel(channelId))!;
         expect(channel.importance, Importance.low);
       },
       minSdk: 26,
