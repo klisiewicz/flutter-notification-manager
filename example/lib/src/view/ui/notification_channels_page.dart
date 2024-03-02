@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_notification_manager/flutter_notification_manager.dart';
 import 'package:flutter_notification_manager_example/src/provider/notification_provider.dart';
