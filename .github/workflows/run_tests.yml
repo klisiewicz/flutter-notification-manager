@@ -40,5 +40,5 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          working-directory: /example
+          working-directory: ./example
           script: flutter test integration_test
