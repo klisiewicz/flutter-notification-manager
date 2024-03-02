@@ -557,7 +557,7 @@ Future<void> main() async {
             name: 'New name',
             description: 'New description',
             // Changing these values should have no effect
-            importance: Importance.high,
+            importance: Importance.low,
             showBadge: true,
             enableVibrations: false,
             enableLights: false,
@@ -576,6 +576,62 @@ Future<void> main() async {
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
         expect(channel.lightColor, const Color(0xFFFF00FF));
+      },
+      minSdk: 26,
+      sdk: sdk,
+    );
+
+    testAndroid(
+      'should update a channel importance when changing from higher to lower',
+      (tester) async {
+        final channelId = randomId();
+        await notificationManager.createNotificationChannel(
+          NotificationChannel(
+            id: channelId,
+            name: 'Name',
+            importance: Importance.high,
+          ),
+        );
+
+        await notificationManager.createNotificationChannel(
+          NotificationChannel(
+            id: channelId,
+            name: 'Name',
+            importance: Importance.low,
+          ),
+        );
+
+        final channel =
+            (await notificationManager.getNotificationChannel(channelId))!;
+        expect(channel.importance, Importance.low);
+      },
+      minSdk: 26,
+      sdk: sdk,
+    );
+
+    testAndroid(
+      'should NOT update a channel importance when changing from lower to higher',
+          (tester) async {
+        final channelId = randomId();
+        await notificationManager.createNotificationChannel(
+          NotificationChannel(
+            id: channelId,
+            name: 'Name',
+            importance: Importance.low,
+          ),
+        );
+
+        await notificationManager.createNotificationChannel(
+          NotificationChannel(
+            id: channelId,
+            name: 'Name',
+            importance: Importance.high,
+          ),
+        );
+
+        final channel =
+        (await notificationManager.getNotificationChannel(channelId))!;
+        expect(channel.importance, Importance.low);
       },
       minSdk: 26,
       sdk: sdk,
