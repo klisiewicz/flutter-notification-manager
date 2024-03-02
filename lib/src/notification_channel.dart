@@ -44,8 +44,8 @@ final class NotificationChannel {
   /// lights, on devices that support that feature.
   final bool enableLights;
 
-  @JsonKey(toJson: _colorToJson, fromJson: _colorFromJson)
   /// The notification light color for notifications posted to this channel.
+  @JsonKey(toJson: _colorToJson, fromJson: _colorFromJson)
   final int? lightColor;
 
   /// Whether notification posted to this channel should vibrate.
