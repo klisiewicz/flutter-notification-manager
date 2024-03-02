@@ -12,7 +12,6 @@ jobs:
   android:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1
       matrix:
         api-level: [25, 29, 33]
         target: [default]
@@ -36,6 +35,28 @@ jobs:
       - name: Run analyzer
         run: flutter analyze
 
+      - name: Gradle cache
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: AVD cache
+        uses: actions/cache@v4
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.api-level }}
+
+      - name: create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: echo "Generated AVD snapshot for caching."
+
       - name: Run integration tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -44,4 +65,7 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           working-directory: ./example
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
           script: flutter test integration_test
