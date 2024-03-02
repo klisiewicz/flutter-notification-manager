@@ -5,14 +5,13 @@ import 'package:meta/meta.dart';
 
 part 'notification_channel.g.dart';
 
+/// A representation of settings that apply to a collection of similarly
+/// themed notifications.
 @immutable
 @JsonSerializable(
   explicitToJson: true,
   anyMap: true,
 )
-
-/// A representation of settings that apply to a collection of similarly
-/// themed notifications.
 final class NotificationChannel {
   /// The id of this channel.
   final String id;
@@ -77,6 +76,8 @@ final class NotificationChannel {
   }
 }
 
+/// A representation of a conversation that a [NotificationChannel] is
+/// associated with.
 @JsonSerializable()
 final class Conversation {
   /// The id of the parent notification channel to this channel.
@@ -99,6 +100,8 @@ final class Conversation {
   }
 }
 
+/// A representation of the user specified importance for notifications posted
+/// to a [NotificationChannel].
 @JsonEnum(valueField: 'value')
 enum Importance {
   max(5),

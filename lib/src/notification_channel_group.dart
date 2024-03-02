@@ -3,14 +3,13 @@ import 'package:meta/meta.dart';
 
 part 'notification_channel_group.g.dart';
 
+/// A grouping of related notification channels. e.g., channels that all belong
+/// to a single account.
 @immutable
 @JsonSerializable(
   explicitToJson: true,
   anyMap: true,
 )
-
-/// A grouping of related notification channels. e.g., channels that all belong
-/// to a single account.
 final class NotificationChannelGroup {
   /// The id of this group.
   final String id;

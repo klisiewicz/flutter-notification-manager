@@ -3,6 +3,7 @@ import 'package:flutter_notification_manager/src/notification_channel_group.dart
 import 'package:flutter_notification_manager/src/notification_manager_platform_interface.dart';
 import 'package:meta/meta.dart';
 
+/// [NotificationManager] allows to manage notifications on Android devices.
 @immutable
 final class NotificationManager {
   const NotificationManager();
