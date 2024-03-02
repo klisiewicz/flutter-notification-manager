@@ -9,11 +9,11 @@ You can create a notification channel by calling `createNotificationChannel()` :
 ```dart
 const notificationManager = NotificationManager(); 
 await notificationManager.createNotificationChannel(
-	NotificationChannel(
-		id: 'my_channel_01',
-		name: 'My First Channel',
-		importance: Importance.standard,
-	),
+  NotificationChannel(
+    id: 'my_channel_01',
+    name: 'My First Channel',
+    importance: Importance.standard,
+  ),
 );
 ```
 Recreating an existing notification channel with its original values performs no operation, so it's safe to call this code when starting an app.
@@ -56,8 +56,8 @@ After you create a new group, you can assign a `NotificationChannel` to that gro
 
 ```dart
 const channel = NotificationChannel(
-	// ...
-	groupId: 'my_group_01',
+  // ...
+  groupId: 'my_group_01',
 );
 ```
 
