@@ -1,6 +1,5 @@
 name: flutter_notification_manager_example
 description: "Demonstrates how to use the flutter_notification_manager plugin."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: '>=3.2.3 <4.0.0'

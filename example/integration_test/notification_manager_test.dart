@@ -9,9 +9,9 @@ import 'package:integration_test/integration_test.dart';
 import 'android_tester.dart';
 
 Future<void> main() async {
-  final sdk = (await DeviceInfoPlugin().androidInfo).version.sdkInt;
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   late NotificationManager notificationManager;
+  final sdk = (await DeviceInfoPlugin().androidInfo).version.sdkInt;
 
   setUp(() {
     notificationManager = const NotificationManager();
@@ -349,7 +349,7 @@ Future<void> main() async {
             showBadge: true,
             enableVibrations: true,
             enableLights: true,
-            lightColor: const Color(0xFFFF00FF),
+            lightColor: 0xFFFF00FF,
           ),
         );
 
@@ -363,7 +363,7 @@ Future<void> main() async {
         expect(channel.showBadge, isTrue);
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
-        expect(channel.lightColor, const Color(0xFFFF00FF));
+        expect(channel.lightColor, 0xFFFF00FF);
       },
       minSdk: 26,
       sdk: sdk,
@@ -547,7 +547,7 @@ Future<void> main() async {
             showBadge: false,
             enableVibrations: true,
             enableLights: true,
-            lightColor: const Color(0xFFFF00FF),
+            lightColor: 0xFFFF00FF,
           ),
         );
 
@@ -561,7 +561,7 @@ Future<void> main() async {
             showBadge: true,
             enableVibrations: false,
             enableLights: false,
-            lightColor: const Color(0xFF00FFFF),
+            lightColor: 0xFF00FFFF,
           ),
         );
 
@@ -575,7 +575,7 @@ Future<void> main() async {
         expect(channel.showBadge, isFalse);
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
-        expect(channel.lightColor, const Color(0xFFFF00FF));
+        expect(channel.lightColor, 0xFFFF00FF);
       },
       minSdk: 26,
       sdk: sdk,
@@ -611,7 +611,7 @@ Future<void> main() async {
 
     testAndroid(
       'should NOT update a channel importance when changing from lower to higher',
-          (tester) async {
+      (tester) async {
         final channelId = randomId();
         await notificationManager.createNotificationChannel(
           NotificationChannel(
@@ -630,7 +630,7 @@ Future<void> main() async {
         );
 
         final channel =
-        (await notificationManager.getNotificationChannel(channelId))!;
+            (await notificationManager.getNotificationChannel(channelId))!;
         expect(channel.importance, Importance.low);
       },
       minSdk: 26,
@@ -729,7 +729,7 @@ Future<void> main() async {
             showBadge: false,
             enableVibrations: true,
             enableLights: true,
-            lightColor: const Color(0xFFFF00FF),
+            lightColor: 0xFFFF00FF,
           ),
         );
         await notificationManager.deleteNotificationChannel(channelId);
@@ -744,7 +744,7 @@ Future<void> main() async {
             showBadge: true,
             enableVibrations: false,
             enableLights: false,
-            lightColor: const Color(0xFF00FFFF),
+            lightColor: 0xFF00FFFF,
           ),
         );
 
@@ -758,7 +758,7 @@ Future<void> main() async {
         expect(channel.showBadge, isFalse);
         expect(channel.enableVibrations, isTrue);
         expect(channel.enableLights, isTrue);
-        expect(channel.lightColor, const Color(0xFFFF00FF));
+        expect(channel.lightColor, 0xFFFF00FF);
       },
       minSdk: 26,
       sdk: sdk,
